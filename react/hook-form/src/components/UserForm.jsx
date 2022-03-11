@@ -5,7 +5,8 @@ const UserForm = (props) =>{
         firstName: "",
         lastName: "",
         email: "",
-        password: ""
+        password: "",
+        passwordCheck: ""
     })
     const changeHandler = (e)=>{
         setUserForm({
@@ -16,7 +17,7 @@ const UserForm = (props) =>{
     return (
         <>
             <h1>Hook Form</h1>
-            <form className='container'>
+            <form className='container col-5'>
                 <div className="form-group">
                     <label htmlFor="">First Name:</label>
                     <input type="text" name="firstName" id="" className="form-control" onChange={changeHandler}/> 
@@ -49,12 +50,22 @@ const UserForm = (props) =>{
                     <p className='text-danger'>Password must be at least 8 characters</p> : null
                 }
                 </div>
+                <div className="form-group">
+                    <label htmlFor="">Password again:</label>
+                    <input type="password" name="passwordCheck" id="" className="form-control" onChange={changeHandler}/> 
+                {
+                    userForm.password !== userForm.passwordCheck && userForm.passwordCheck.length>0? 
+                    <p className='text-danger'>Password must match.</p> : null
+                }
+                </div>
                 <input type="submit" value="Hook Form" className="btn btn-success mt-3" />
             </form>
+            <hr/>
             <p>First Name: {userForm.firstName} </p>
             <p>Last Name: {userForm.lastName}</p>
             <p>Email: {userForm.email}</p>
             <p>Password: {userForm.password}</p>
+            <hr/>
         </>
     )
 }
