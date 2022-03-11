@@ -49,36 +49,57 @@
 
 
 
+// const combineSortedArrays = (arr1, arr2) => {
+//     let result = [];
+//     let i = 0;
+//     let j = 0;
+//     while(i < arr1.length && j < arr2.length){
+//         if(arr1[i] < arr2[j]){
+//             result.push(arr1[i]);
+//             i++;
+//         }
+//         else{
+//             result.push(arr2[j]);
+//             j++;
+//         }
+//     }
+//     while(i < arr1.length){
+//         result.push(arr1[i]);
+//         i++;
+//     }
+//     while(j < arr2.length){
+//         result.push(arr2[j]);
+//         j++;
+//     }
+//     return result;
+// }
 
 
-const combineSortedArrays = (arr1, arr2) => {
-    let result = [];
-    let i = 0;
-    let j = 0;
-    while(i < arr1.length && j < arr2.length){
-        if(arr1[i] < arr2[j]){
-            result.push(arr1[i]);
-            i++;
+// console.log(combineSortedArrays([1,3,5,5,6], [2,3,4,9])) //[1,2,3,3,4,5,5,6,9]
+
+// console.log(combineSortedArrays([1,3,3,5,9], [0,1,4])) //[1,2,3,3,4,5,5,6,9]
+
+
+const merge = (arr1, arr2) =>{
+    let merged = [];
+    let [x, y] = [0, 0];
+    for (let i = 0; i < (arr1.length + arr2.length); i++){
+        if (y >= arr2.length || arr1[x] < arr2[y]){
+            merged.push(arr1[x]);
+            x++;
+        }else{
+            merged.push(arr2[y]);
+            y++;
         }
-        else{
-            result.push(arr2[j]);
-            j++;
-        }
-    }
-    while(i < arr1.length){
-        result.push(arr1[i]);
-        i++;
-    }
-    while(j < arr2.length){
-        result.push(arr2[j]);
-        j++;
-    }
-    return result;
+    }return merged;
 }
 
+const mergeSort = (arr) =>{
+    if (arr.length <= 1) return arr;
+    let mid = Math.floor(arr.length / 2);
+    let leftSorted = mergeSort(arr.slice(0, mid));
+    let rightSorted = mergeSort(arr.slice(mid));
+    return merge(rightSorted, leftSorted);
+}
 
-console.log(combineSortedArrays([1,3,5,5,6], [2,3,4,9])) //[1,2,3,3,4,5,5,6,9]
-
-console.log(combineSortedArrays([1,3,3,5,9], [0,1,4])) //[1,2,3,3,4,5,5,6,9]
-
-
+console.log(mergeSort([8,2,7,9,4,5,1,6,3]));
