@@ -12,6 +12,40 @@ const encode = (str) => {
         }
     }return encodeStr;
 }
+function encode2(str) {
+    let output = "";
+    let obj = {};
+    for (let x = 0; x < str.length; x++){
+        if(str[x] in obj){
+            obj[str[x]] += 1;
+        }else{
+            obj[str[x]] = 1;
+        }
+    } 
+    for (const key in obj) {
+        // console.log(`${key}: ${obj[key]}`);
+        output += key + obj[key];
+    }
+    return output;
+}
+const encode3 = (str) => {
+    let result = "";
+    let map = new Map;
+    for (let i = 0; i < str.length; i++){
+        let count = map.get(str[i]);
+        if(map.has(str[i])){
+            map.set(str[i], count+1);
+        }else{
+            map.set(str[i], 1);
+        }
+    }for (let [key, value] of map.entries()){
+        result += key + value;
+    }
+    return result;
+}
 
-
-console.log(encode("aaabbbbcdd")) //"a3b4c1d2"
+console.log(encode("aaabbbbcdd")); //"a3b4c1d2"
+console.log(encode2("aaabbbbcdd")); //"a3b4c1d2"
+console.log(encode2("addbbdccdaabbccbaabcdaad"));
+console.log(encode3("aaabbbbcdd")); //"a3b4c1d2"
+console.log(encode3("addbbdccdaabbccbaabcdaad"));
