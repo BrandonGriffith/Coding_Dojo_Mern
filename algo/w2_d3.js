@@ -25,22 +25,22 @@ function encode2(str) {
     for (const key in obj) {
         // console.log(`${key}: ${obj[key]}`);
         output += key + obj[key];
-    }
+    }console.log(obj);
     return output;
 }
 const encode3 = (str) => {
     let result = "";
     let map = new Map;
     for (let i = 0; i < str.length; i++){
-        let count = map.get(str[i]);
         if(map.has(str[i])){
+            let count = map.get(str[i]);
             map.set(str[i], count+1);
         }else{
             map.set(str[i], 1);
         }
     }for (let [key, value] of map.entries()){
         result += key + value;
-    }
+    }console.log(map);
     return result;
 }
 
