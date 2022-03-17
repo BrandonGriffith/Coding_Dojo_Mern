@@ -66,4 +66,4 @@ console.log(encode3("aaabbbbcdd")); //"a3b4c1d2"
 console.log(encode3("addbbdccdaabbccbaabcdaad"));
 console.log("---------------------------------");
 console.log("Encoded ===> ",encode("aaabbbbcdd")); //"a3b4c1d2"
-console.log("Decoded ===> ",decode("a3b4c1d2"));
+console.log("Decoded ===> ",decode("a3b4c1d2")); //"aaabbbbcdd"
