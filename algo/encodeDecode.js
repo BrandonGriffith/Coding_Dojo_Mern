@@ -59,6 +59,7 @@ const decode = (str) => {
 }
 
 
+
 console.log(encode2("aaabbbbcdd")); //"a3b4c1d2"
 console.log(encode2("addbbdccdaabbccbaabcdaad"));
 console.log(encode3("aaabbbbcdd")); //"a3b4c1d2"
