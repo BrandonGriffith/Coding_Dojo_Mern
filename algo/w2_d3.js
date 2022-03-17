@@ -38,7 +38,7 @@ const encode3 = (str) => {
         }else{
             map.set(str[i], 1);
         }
-    }for (let [key, value] of map.entries()){
+    }for (let [key, value] of map){
         result += key + value;
     }console.log(map);
     return result;
