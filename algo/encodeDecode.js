@@ -43,9 +43,26 @@ const encode3 = (str) => {
     }console.log(map);
     return result;
 }
+const decode = (str) => {
+    let result = "";
+    let numStr = "";
+    let current = str[0];
+    for (let i = 0; i <= str.length; i++){
+        if (!isNaN(str[i])){
+            numStr += str[i];
+        }else{
+            result += current.repeat(numStr);
+            numStr = "";
+            current = str[i];
+        }
+    }return result;
+}
 
-console.log(encode("aaabbbbcdd")); //"a3b4c1d2"
+
 console.log(encode2("aaabbbbcdd")); //"a3b4c1d2"
 console.log(encode2("addbbdccdaabbccbaabcdaad"));
 console.log(encode3("aaabbbbcdd")); //"a3b4c1d2"
 console.log(encode3("addbbdccdaabbccbaabcdaad"));
+console.log("---------------------------------");
+console.log("Encoded ===> ",encode("aaabbbbcdd")); //"a3b4c1d2"
+console.log("Decoded ===> ",decode("a3b4c1d2"));
