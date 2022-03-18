@@ -1,5 +1,16 @@
 .App {
   text-align: center;
+  background-color: black;
+  color: yellow;
+}
+
+body {
+  background-color: black;
+}
+
+.yellow {
+  color: yellow;
+  border: 1px solid yellow;
 }
 
 .App-logo {
