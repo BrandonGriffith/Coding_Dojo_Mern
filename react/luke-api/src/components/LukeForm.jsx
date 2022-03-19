@@ -28,6 +28,8 @@ const LukeForm = () => {
             <input type="submit" value="Search" className="btn yellow mt-3" />
             </form>
         <hr/>
+        <img src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/veh-ia-1751-1576604159.jpg"
+        width="30%;" className="float" alt=""/>
     </>
 }
 export default LukeForm;
