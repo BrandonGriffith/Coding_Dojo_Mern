@@ -1,10 +1,25 @@
-import React, {useState } from 'react';
+import React, {useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
+import axios from 'axios';
 
 const LukeForm = () => {
-    let [resource, setResource] = useState("people");
-    let [id, setId] = useState(1);
+    let [resource, setResource] = useState("");
+    let [id, setId] = useState("");
+    let [lukeInfo, setLukeInfo] = useState([]);
     let history = useHistory();
+
+    useEffect(()=>{
+        axios.get("https://swapi.dev/api/")
+            .then((response)=>{
+                setLukeInfo(response.data);
+                setResource("people");
+                setId("1");
+                console.log(response.data);
+            })
+            .catch((err)=>{
+                console.log("error", err);
+            }
+            )},[])
 
     const submitHandler = (e) => {
         e.preventDefault();
@@ -16,9 +31,16 @@ const LukeForm = () => {
             <div className="form-group">
                 <label htmlFor="">Search for:</label>
                 <select name="" id="" className='form-select' onChange={(e)=>{setResource(e.target.value)}} value={resource}>
-                    <option value="people">People</option>
+                    {
+                        Object.keys(lukeInfo).map((value, key)=>{
+                            return(
+                                <option key={key} value={value}>{value}</option>
+                            )
+                        })
+                    }
+                    {/* <option value="people">People</option>
                     <option value="planets">Planets</option>
-                    <option value="starships">StarShips</option>
+                    <option value="starships">StarShips</option> */}
                 </select>
             </div>
             <div className="form-group">
