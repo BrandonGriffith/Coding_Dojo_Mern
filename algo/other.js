@@ -28,9 +28,18 @@ mergeSortedArrays([0,3,4,31], [4,6,30]);
 
 
 let arr = [2,3,5,1,3,6,2,3,5,6,3,2,34]
-const reCur = () => {
-    const map = new Map;
+const reCur = (arr) => {
+    let map = new Map;
+    let firstTwo = 2;
     for(let i = 0; i < arr.length; i++){
-        
-    }
+        if (map.has(arr[i])) {
+            let count = map.get(arr[i]);
+            map.set(arr[i], count+1);
+            firstTwo--;
+            if (firstTwo === 0) {
+                return Array.from(map.keys()).slice(0,2); }
+        }else map.set(arr[i], 1);
+    }console.log(map);
+    
 }
+console.log(reCur(arr));
