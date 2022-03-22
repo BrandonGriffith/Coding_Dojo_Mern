@@ -43,3 +43,9 @@ const reCur = (arr) => {
     
 }
 console.log(reCur(arr));
+
+
+let map = new Map;
+map.set(1,'one');
+map.set(2,'two');
+map.forEach((value, key) => console.log(key, value));
