@@ -13,11 +13,12 @@ const ProductForm = (props) => {
         axios.post("http://localhost:8000/api/products/new",info)
             .then( response => {
                 console.log(response);
-                if(response.data.error) setErrorHandler(response.data.error.errors);
                 setTitle("");
                 setPrice("");
                 setDescription("");
                 props.setSubmitHandler(!props.submitHandler);
+                if(response.data.error) {setErrorHandler(response.data.error.errors); return};
+                setErrorHandler({});
             })
             .catch( error => console.log(error));
     }

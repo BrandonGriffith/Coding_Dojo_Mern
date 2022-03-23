@@ -25,19 +25,17 @@ const EditProduct = () => {
         });
     }
 
-    
-    
     const editProduct = (e)=>{
         e.preventDefault();
         axios.put(`http://localhost:8000/api/products/update/${id}`, productInfo)
             .then(response=>{
                 console.log(response);
                 if (response.data.error) {setErrorHandler(response.data.error.errors); return};
+                setErrorHandler({});
                 history.push('/');
             })
             .catch(error=> console.log(error));
     }
-
 
     return (
         <div>
@@ -65,6 +63,5 @@ const EditProduct = () => {
             </form>
         </div>
     );
-
 }
 export default EditProduct;
