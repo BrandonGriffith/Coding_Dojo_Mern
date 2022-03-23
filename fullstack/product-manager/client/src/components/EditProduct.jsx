@@ -7,11 +7,13 @@ const EditProduct = () => {
     const {id} = useParams();
     const history = useHistory();
     let [productInfo, setProductInfo] = useState({});
+    let [errorHandler, setErrorHandler] = useState({})
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/products/${id}`)
             .then(response=>{
                 console.log(response);
+                if(response.data.error) setErrorHandler(response.data.error.errors);
                 setProductInfo(response.data.results);
             })
             .catch(error=> console.log(error));
@@ -30,6 +32,7 @@ const EditProduct = () => {
         axios.put(`http://localhost:8000/api/products/update/${id}`, productInfo)
             .then(response=>{
                 console.log(response);
+                if (response.data.error) {setErrorHandler(response.data.error.errors); return};
                 history.push('/');
             })
             .catch(error=> console.log(error));
@@ -43,17 +46,20 @@ const EditProduct = () => {
                 <div className="form-group">
                     <label htmlFor="">Title:</label>
                     <input type="text" name="title" id="" className="form-control" onChange={setValues} 
-                    value={productInfo.title?productInfo.title:"1"} />
+                    value={productInfo.title?productInfo.title:""} />
+                    <p className="text-danger">{errorHandler.title?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Price:</label>
                     <input type="number" name="price" id="" className="form-control" onChange={setValues} 
-                    value={productInfo.price?productInfo.price:1} />
+                    value={productInfo.price?productInfo.price:""} />
+                    <p className="text-danger">{errorHandler.price?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Description:</label>
                     <input type="text" name="description" id="" className="form-control" onChange={setValues} 
-                    value={productInfo.description?productInfo.description:"1"} />  
+                    value={productInfo.description?productInfo.description:""} />
+                    <p className="text-danger">{errorHandler.description?.message}</p>
                 </div>
                 <input type="submit" className='btn btn-success m-3' value="Edit Product" />
             </form>
