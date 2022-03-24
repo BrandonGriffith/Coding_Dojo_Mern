@@ -1,0 +1,29 @@
+----------------------
+mkdir new-project
+cd new-project
+echo > server.js
+ctrl C
+mkdir server
+----------------------
+or
+----------------------
+use setupMERN.zip
+edit server.js
+----------------------
+
+
+npm init -y
+npm install express mongoose cors
+
+
+nodemon server.js
+
+
+npx create-react-app client
+cd client
+
+
+npm install axios react-router-dom@5
+npm start
+
+

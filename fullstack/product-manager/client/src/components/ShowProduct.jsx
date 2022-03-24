@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const ShowProduct = () => {
     const {id} = useParams();
@@ -27,6 +28,9 @@ const ShowProduct = () => {
 
     return (
         <div>
+            <Link to="/" className='btn btn-success m-2'>
+                Home
+            </Link>
             <h3>{productInfo.title}</h3>
             <p>Product Id: {productInfo._id}</p>
             <p>Product Price: ${productInfo.price}</p>
