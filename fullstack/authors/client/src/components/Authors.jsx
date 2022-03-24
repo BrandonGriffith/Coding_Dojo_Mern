@@ -27,6 +27,13 @@ const Authors = (props) => {
             .catch(error => console.log(error));
     }
 
+    authorList.sort((a, b) => {
+        let fa = a.firstName.toLowerCase();
+        let fb = b.firstName.toLowerCase();
+        if (fa < fb) return -1;
+        if (fa > fb) return 1;
+        return 0;
+    });
 
     return (
         <div>

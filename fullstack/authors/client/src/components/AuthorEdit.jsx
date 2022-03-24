@@ -9,15 +9,18 @@ const AuthorEdit = () => {
     const history = useHistory();
     let [authorInfo, setAuthorInfo] = useState({});
     let [errorHandler, setErrorHandler] = useState({});
+    let [unknownAuther, setUnknownAuthor] = useState(true);
 
     useEffect(()=>{
         axios.get(`http://localhost:8000/api/authors/${id}`)
             .then(response=>{
                 console.log(response);
-                if(response.data.error) setErrorHandler(response.data.error.errors);
+                if(response.data.error) {setErrorHandler(response.data.error.errors); return};
+                setUnknownAuthor(false);
                 setAuthorInfo(response.data.results);
             })
             .catch(error=> {
+                setUnknownAuthor(true);
                 console.log("your have an error!!!",error);
             });
             },[id])
@@ -34,6 +37,7 @@ const AuthorEdit = () => {
             .then(response=>{
                 console.log(response);
                 if (response.data.error) {setErrorHandler(response.data.error.errors); return};
+                setAuthorInfo({[e.target.name]: e.target.value});
                 setErrorHandler({});
                 history.push('/');
             })
@@ -42,6 +46,14 @@ const AuthorEdit = () => {
 
     return (
         <div>
+            {unknownAuther?<>
+                <h1>
+                We're sorry, but we could not find the author you are looking for. Would you like to add this author to our database?
+                </h1>
+                <Link to="/new" className='btn btn-success m-2'>
+                Add a new author
+                </Link>
+                </>:<>
             <Link to="/" className='btn btn-success m-2'>
                 Home
             </Link>
@@ -70,6 +82,7 @@ const AuthorEdit = () => {
                 </Link>
                 <input type="submit" className='btn btn-success m-3' value="Edit author" />
             </form>
+            </>}
         </div>
     );
 

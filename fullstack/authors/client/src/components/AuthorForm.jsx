@@ -16,11 +16,11 @@ const AuthorForm = (props) => {
         axios.post("http://localhost:8000/api/authors/new",info)
             .then( response => {
                 console.log(response);
+                props.setSubmitHandler(!props.submitHandler);
+                if(response.data.error) {setErrorHandler(response.data.error.errors); return};
                 setFirstName("");
                 setLastName("");
                 setQuote("");
-                props.setSubmitHandler(!props.submitHandler);
-                if(response.data.error) {setErrorHandler(response.data.error.errors); return};
                 setErrorHandler({});
                 history.push("/");
             })
