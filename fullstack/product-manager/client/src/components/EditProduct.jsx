@@ -50,7 +50,7 @@ const EditProduct = () => {
                 <div className="form-group">
                     <label htmlFor="">Price:</label>
                     <input type="number" name="price" id="" className="form-control" onChange={setValues} 
-                    value={productInfo.price?productInfo.price:""} />
+                    value={productInfo.price?productInfo.price:""} step="0.01"/>
                     <p className="text-danger">{errorHandler.price?.message}</p>
                 </div>
                 <div className="form-group">

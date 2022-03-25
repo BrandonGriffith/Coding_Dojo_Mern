@@ -9,10 +9,11 @@ const ProductSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: [true, "must have a price"],
-        min: [1, "punchLine is too short"]
+        min: [0.01, "punchLine is too short"]
     },
     description: {
-        type: String,
+        type: String, 
+        default: "unknown",
         required: [true, "must have a description"],
         minlength: [2, "description is too short"]
     },

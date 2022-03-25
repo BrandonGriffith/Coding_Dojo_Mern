@@ -19,6 +19,8 @@ const Products = (props) => {
 
 
     const deleteProduct = (id)=>{
+        let result = window.confirm("Want to delete?");
+        if (result) {
         axios.delete(`http://localhost:8000/api/products/delete/${id}`)
             .then(response=>{
                 console.log(response);
@@ -26,6 +28,7 @@ const Products = (props) => {
                 props.setSubmitHandler(!props.submitHandler);
             })
             .catch(error=>console.log(error));
+        }
     }
 
 
