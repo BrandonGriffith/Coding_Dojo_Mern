@@ -8,7 +8,8 @@ const Movies = (props) => {
     const searchValue = props.searchValue;
     const setMovieList = props.setMovieList;
     const EditFav = props.EditFav;
-
+    const favUpdate = props.favUpdate;
+    const setFavUpdate = props.setFavUpdate;
 
 
     useEffect(() => {
@@ -22,6 +23,17 @@ const Movies = (props) => {
         }, [searchValue,setMovieList,apiKey])
 
 
+    const addMovie = (Poster,Title,Type,Year,imdbID)=>{
+        let info = {Poster,Title,Type,Year,imdbID};
+        axios.post("http://localhost:8000/api/movies/new",info)
+            .then( _response => {
+                // console.log(response);
+                setFavUpdate(!favUpdate);
+            })
+            .catch( error => console.log(error));
+        }
+
+
     return(
         <>
         <div className="row">
@@ -30,7 +42,7 @@ const Movies = (props) => {
                     props.movieList.map((movie, index) => 
                         <div key={index} className="image-container m-3">
                             <img src={movie.Poster} height="300px" alt={"movie poster"}/>
-                            <div onClick={()=>props.favClick(movie)} 
+                            <div onClick={()=>addMovie(movie.Poster,movie.Title,movie.Type,movie.Year,movie.imdbID)} 
                                 className='overlay d-flex align-items-center justify-content-center'>
                                 <EditFav/>
                             </div>

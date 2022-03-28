@@ -14,15 +14,8 @@ function App() {
   const [movieList, setMovieList] = useState([]);
   const [searchValue, setSearchValue] = useState('batman');
   const [favList, setFavList] = useState([]);
-  const addToFav = (movie) => {
-    const newFavList = [...favList, movie];
-    setFavList(newFavList);
-  }
-  const removeFav = (movie) => {
-    const newFavList = favList.filter((fm)=> 
-    fm.imdbID !== movie.imdbID);
-    setFavList(newFavList);
-  }
+  const [favUpdate,setFavUpdate] = useState(false);
+
   return (
     <BrowserRouter>
     <div className="App container-fluid movie-app">
@@ -36,15 +29,15 @@ function App() {
           <Movies 
           movieList={movieList} setMovieList={setMovieList}
           searchValue={searchValue} setSearchValue={setSearchValue}
-          EditFav={MovieAddFav} favClick={addToFav}
+          EditFav={MovieAddFav} favUpdate={favUpdate} setFavUpdate={setFavUpdate}
           />
           <div className='row d-flex justify-content-between'>
             <MovieTitle title="Favorites"/>
           </div>
           <MovieSet 
-          movieList={favList} setMovieList={setMovieList}
+          favList={favList} setFavList={setFavList}
           searchValue={searchValue} setSearchValue={setSearchValue}
-          EditFav={MovieRemoveFav} favClick={removeFav}
+          EditFav={MovieRemoveFav} favUpdate={favUpdate} setFavUpdate={setFavUpdate}
           />
         </Route>
       </Switch>
