@@ -41,7 +41,7 @@ const Movies = (props) => {
                 {
                     props.movieList.map((movie, index) => 
                         <div key={index} className="image-container m-3">
-                            <img src={movie.Poster} height="300px" alt={"movie poster"}/>
+                            <img src={movie.Poster} alt={"movie poster"}/>
                             <div onClick={()=>addMovie(movie.Poster,movie.Title,movie.Type,movie.Year,movie.imdbID)} 
                                 className='overlay d-flex align-items-center justify-content-center'>
                                 <EditFav/>
@@ -50,6 +50,7 @@ const Movies = (props) => {
                 }
             </div>
         </div>
+        <p className='d-flex justify-content-center inline-block'>-----( Hold Shift to Scroll )-----</p>
         </>
     )
 }

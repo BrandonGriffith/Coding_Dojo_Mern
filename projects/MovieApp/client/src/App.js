@@ -19,11 +19,11 @@ function App() {
   return (
     <BrowserRouter>
     <div className="App container-fluid movie-app">
-      <h1>Movie App Project</h1>
+      <h1>Movie App Project MERN</h1>
       <Switch>
         <Route exact path="/">
           <div className='row d-flex justify-content-between'>
-            <MovieTitle title="Movies"/>
+            <MovieTitle title="Movies" tech="(OMDb API)"/>
             <MovieSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
           </div>
           <Movies 
@@ -32,7 +32,7 @@ function App() {
           EditFav={MovieAddFav} favUpdate={favUpdate} setFavUpdate={setFavUpdate}
           />
           <div className='row d-flex justify-content-between'>
-            <MovieTitle title="Favorites"/>
+            <MovieTitle title="Favorites" tech="(Express RESTful api)"/>
           </div>
           <MovieSet 
           favList={favList} setFavList={setFavList}

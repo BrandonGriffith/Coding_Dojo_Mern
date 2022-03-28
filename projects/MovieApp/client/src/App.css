@@ -7,6 +7,30 @@ body {
   color: whitesmoke;
 }
 
+h1 {
+    font-size: 2.2vw;
+    white-space: nowrap;
+}
+
+h2 {
+  font-size: 1.5vw;
+  white-space: nowrap;
+}
+
+p {
+  font-size: 1.2vw;
+  white-space: nowrap;
+}
+
+input {
+  font-size: 2.2vw;
+  height: 2.2vw;
+}
+
+img {
+  height: 15.5vw;
+}
+
 .movie-app > .row {
   flex-wrap: nowrap;
   overflow-x: auto;
