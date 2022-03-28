@@ -14,7 +14,7 @@ function App() {
   const [movieList, setMovieList] = useState([]);
   const [searchValue, setSearchValue] = useState('batman');
   const [favList, setFavList] = useState([]);
-  const [favUpdate,setFavUpdate] = useState(false);
+  const [favUpdate, setFavUpdate] = useState(false);
 
   return (
     <BrowserRouter>

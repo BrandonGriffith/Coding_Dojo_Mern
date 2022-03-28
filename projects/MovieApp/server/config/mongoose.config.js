@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const setup = "mongodb+srv://root:root@cluster0.gdza0.mongodb.net/";
+const setup = process.env.MONGODB;
 const db = "movie-app-db";
 const settings = "?retryWrites=true&w=majority";
 
