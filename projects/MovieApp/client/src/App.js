@@ -1,13 +1,55 @@
 import './App.css';
+import { useState } from 'react';
+import { BrowserRouter, Switch, Route 
+} from "react-router-dom";
 import Movies from './components/Movies';
+import MovieSearch from './components/MovieSearch';
+import MovieTitle from './components/MovieTitle';
+import MovieAddFav from './components/MovieAddFav';
+import MovieRemoveFav from './components/MovieRemoveFav';
+import MovieSet from './components/MovieSet';
+
 
 function App() {
+  const [movieList, setMovieList] = useState([]);
+  const [searchValue, setSearchValue] = useState('batman');
+  const [favList, setFavList] = useState([]);
+  const addToFav = (movie) => {
+    const newFavList = [...favList, movie];
+    setFavList(newFavList);
+  }
+  const removeFav = (movie) => {
+    const newFavList = favList.filter((fm)=> 
+    fm.imdbID !== movie.imdbID);
+    setFavList(newFavList);
+  }
   return (
-    <div className="App container col-4">
+    <BrowserRouter>
+    <div className="App container-fluid movie-app">
       <h1>Movie App Project</h1>
-      <Movies/>
+      <Switch>
+        <Route exact path="/">
+          <div className='row d-flex justify-content-between'>
+            <MovieTitle title="Movies"/>
+            <MovieSearch searchValue={searchValue} setSearchValue={setSearchValue}/>
+          </div>
+          <Movies 
+          movieList={movieList} setMovieList={setMovieList}
+          searchValue={searchValue} setSearchValue={setSearchValue}
+          EditFav={MovieAddFav} favClick={addToFav}
+          />
+          <div className='row d-flex justify-content-between'>
+            <MovieTitle title="Favorites"/>
+          </div>
+          <MovieSet 
+          movieList={favList} setMovieList={setMovieList}
+          searchValue={searchValue} setSearchValue={setSearchValue}
+          EditFav={MovieRemoveFav} favClick={removeFav}
+          />
+        </Route>
+      </Switch>
     </div>
+    </BrowserRouter>
   );
 }
-
 export default App;

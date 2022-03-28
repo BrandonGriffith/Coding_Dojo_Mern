@@ -1,27 +1,9 @@
-import React, { useEffect } from 'react';
-import axios from 'axios';
+import React from "react";
 
 
-const Movies = (props) => {
-    const url = "http://www.omdbapi.com/?s=";
-    const apiKey = process.env.REACT_APP_OMDD_API_KEY;
-    const searchValue = props.searchValue;
-    const setMovieList = props.setMovieList;
+const MovieSet = (props) => {
     const EditFav = props.EditFav;
-
-
-
-    useEffect(() => {
-        axios.get(`${url + searchValue + apiKey}`)
-            .then(response => {
-                console.log(response);
-                if(response.data.Search){
-                    setMovieList(response.data.Search);
-            }})
-            .catch(error => console.log(error));
-        }, [searchValue,setMovieList])
-
-
+    
     return(
         <>
         <div className="row">
@@ -41,4 +23,4 @@ const Movies = (props) => {
         </>
     )
 }
-export default Movies;
+export default MovieSet;
