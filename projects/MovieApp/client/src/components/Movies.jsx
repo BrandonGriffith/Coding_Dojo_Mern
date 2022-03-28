@@ -19,7 +19,7 @@ const Movies = (props) => {
                     setMovieList(response.data.Search);
             }})
             .catch(error => console.log(error));
-        }, [searchValue,setMovieList])
+        }, [searchValue,setMovieList,apiKey])
 
 
     return(
