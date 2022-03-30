@@ -15,7 +15,7 @@ const Movies = (props) => {
     useEffect(() => {
         axios.get(`${url + searchValue + apiKey}`)
             .then(response => {
-                console.log(response);
+                //console.log(response);
                 if(response.data.Search){
                     setMovieList(response.data.Search);
             }})

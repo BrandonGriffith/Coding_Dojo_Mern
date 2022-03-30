@@ -13,7 +13,7 @@ const MovieSet = (props) => {
     useEffect(() => {
         axios.get("http://localhost:8000/api/movies")
             .then(response => {
-                console.log(response);
+                //console.log(response);
                 setFavList(response.data.results);
             })
             .catch(error => console.log(error));
