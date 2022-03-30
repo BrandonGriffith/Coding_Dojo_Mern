@@ -1,6 +1,9 @@
 const User = require('../models/user.model');
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcrypt");
 
 const api = module.exports;
+const key = process.env.SECRET_KEY;
 
 
 api.findAllUsers = (_req,res)=>{
@@ -47,26 +50,17 @@ api.deleteOneUser = (req,res)=>{
         .catch(err => res.json({ message: "error", error: err }));
 }
 
-api.findRanUser = (_req,res)=>{
-    User.aggregate([{ $sample: { size: 1 } }])
-        .then(allUsers=>{
-            res.json({results: allUsers})
-        })
-        .catch(err => res.json({ message: "error", error: err }));
-}
-
 api.register = (req, res) => {
     User.find({email:req.body.email})
         .then(usersWithEmail=>{
-            console.log("response when finding user", usersWithEmail)
-            if(usersWithEmail.length ===0){
+            if(usersWithEmail.length === 0){
                 User.create(req.body)
                 .then(user => {
                     const userToken= jwt.sign({
                         id: user._id,
                         firstName: user.firstName
-                    }, process.env.SECRET_KEY);
-                    res.cookie("usertoken", userToken, process.env.SECRET_KEY, {
+                    }, key);
+                    res.cookie("usertoken", userToken, key, {
                             httpOnly: true
                         })
                         .json({ msg: "success!", user: user });
@@ -77,4 +71,40 @@ api.register = (req, res) => {
             }
         })
         .catch(err=>console.log("errr!", err))
+}
+
+api.login = async(req, res) => {
+    const user = await User.findOne({ email: req.body.email });
+    if(user === null) {
+        return res.json({error: "User not found"})
+    }
+    const correctPassword = await bcrypt.compare(req.body.password, user.password);
+    if(!correctPassword) {
+        return res.json({error: "Password is incorrect!"})
+    }
+    const userToken = jwt.sign({
+        id: user._id,
+        firstName: user.firstName
+    }, key);
+    res.cookie("usertoken", userToken, key, {
+            httpOnly: true
+        })
+        .json({ msg: "success!" });
+}
+
+api.logout = (_req, res) => {
+    res.clearCookie('usertoken');
+    res.sendStatus(200);
+}
+
+api.getLoggedInUser = (req,res) => {
+    const decodedJWT = jwt.decode(req.cookies.usertoken, {complete:true});
+    if (decodedJWT === null) return res.json({error: "Error no user logged in."});
+    User.findOne({_id: decodedJWT.payload.id })
+        .then(foundUser=>{
+            res.json({results: foundUser})
+        })
+        .catch(err=>{
+            res.json(err)
+        })
 }
