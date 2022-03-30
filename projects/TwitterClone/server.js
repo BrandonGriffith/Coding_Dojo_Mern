@@ -11,7 +11,7 @@ app.use( cors() );
 
 
 require("./server/config/mongoose.config");
-require("./server/routes/movie.routes")(app);
+require("./server/routes/user.routes")(app);
 
 
 app.listen( port );

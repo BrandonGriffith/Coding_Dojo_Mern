@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const setup = process.env.MONGODB;
-const db = "movie-app-db";
+const db = "twitter-clone-db";
 const settings = "?retryWrites=true&w=majority";
 
 
