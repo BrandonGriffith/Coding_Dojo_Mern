@@ -6,6 +6,7 @@ import SignIn from './components/User/SignIn';
 import Dashboard from './components/User/Dashboard';
 import Posts from './components/Post/Posts';
 import PostForm from './components/Post/PostForm';
+import SideBars from './components/Menu/SideBars';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <SignIn/>
           </Route>
           <Route exact path = "/dashboard">
+            <SideBars/>
             <Dashboard loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
             <PostForm loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} 
             submitHandler={submitHandler} setSubmitHandler={setSubmitHandler}/>

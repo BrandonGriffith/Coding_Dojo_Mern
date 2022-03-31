@@ -35,10 +35,9 @@ const Dashboard = (props) => {
     }
 
     return (
-        <div className='d-flex justify-content-between'>
-            <h3>Welcome to the home page {props.loggedInUser.firstName}!!!</h3>
-            <button onClick = {logout} className="btn btn-info">Log Out</button>
-        </div>
+        <>
+            <button onClick = {logout} className="btn logout">Log Out</button>
+        </>
     );
 };
 export default Dashboard;

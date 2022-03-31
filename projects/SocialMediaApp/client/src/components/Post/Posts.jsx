@@ -41,8 +41,8 @@ const Posts = (props) => {
             {
                 PostList.map((PostObj)=>{
                     return (
-                        <div className='d-flex justify-content-center' key = {PostObj._id}>
-                        <div className="card bg-dark text-light col-8 m-3">
+                        <div className='d-flex justify-content-center postSize' key = {PostObj._id}>
+                        <div className="card bg-dark text-light col m-3 postSize">
                             <div className="card-body">
                                 <h3 className="card-title bg-dark text-light">
                                         {PostObj.Title} Posted by {PostObj.User_id?.firstName}

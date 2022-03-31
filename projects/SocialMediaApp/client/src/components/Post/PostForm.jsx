@@ -45,11 +45,11 @@ const PostForm = (props) => {
                     <p className="text-danger">{errorHandler.Message?.message}</p>
                 </div>
                 <div className="form-group">
-                    <label htmlFor="">add an img url</label>
+                    <label htmlFor="">Add ImgUrl</label>
                     <input type="text" className="form-control" onChange={(e)=>{setImgUrl(e.target.value)}} value={ImgUrl}/>
                     <p className="text-danger">{errorHandler.ImgUrl?.message}</p>
                 </div>
-                <input type="submit" className='btn btn-success m-3' value="Add Post" />
+                <input type="submit" className='btn btn-success' value="Add Post" />
             </form>
         </div>
     );
