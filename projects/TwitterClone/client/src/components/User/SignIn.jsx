@@ -8,10 +8,10 @@ const SignIn = () => {
         <div>
             <h1>Sign-in or Register</h1>
             <div className="row">
-                <div className="col bg-dark text-light m-3 p-1 roundMe">
+                <div className="col bg-dark text-light m-5 p-1 roundMe">
                     <RegistrationForm/>
                 </div>
-                <div className="col bg-dark text-light m-3 p-1 roundMe">
+                <div className="col h-50 bg-dark text-light m-5 p-1 roundMe">
                     <LoginForm/>
                 </div>
             </div>

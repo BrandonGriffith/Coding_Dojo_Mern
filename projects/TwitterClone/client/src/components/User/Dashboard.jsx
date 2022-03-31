@@ -36,7 +36,7 @@ const Dashboard = () => {
 
     return (
         <div>
-            <h1>Welcome {loggedInUser.firstName}, you're in the dashboard! Congrats on being a registered user!</h1>
+            <h1>Welcome {loggedInUser.firstName}!!!</h1>
             <button onClick = {logout} className="btn btn-info">Log Out</button>
         </div>
     );

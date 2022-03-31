@@ -22,6 +22,7 @@ app.use( cookieParser() );
 
 require("./server/config/mongoose.config");
 require("./server/routes/user.routes")(app);
+require("./server/routes/post.routes")(app);
 
 
 app.listen( port, () => console.log(`Port:${port}`) );

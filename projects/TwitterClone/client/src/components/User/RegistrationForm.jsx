@@ -35,27 +35,27 @@ const RegistrationForm = () => {
             <form onSubmit={register}>
                 <div className="form-group">
                     <label htmlFor="">First Name</label>
-                    <input type="text" name="firstName" id="1" className='form-control' onChange={(e) => setFirstName(e.target.value)} />
+                    <input type="text" name="firstName" id="1" className='form-control w-50 centerMe' onChange={(e) => setFirstName(e.target.value)} />
                     <p className="text-danger">{formErrors.firstName?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Last Name</label>
-                    <input type="text" name="lastName" id="2" className='form-control' onChange={(e) => setLastName(e.target.value)} />
+                    <input type="text" name="lastName" id="2" className='form-control w-50 centerMe' onChange={(e) => setLastName(e.target.value)} />
                     <p className="text-danger">{formErrors.lastName?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Email</label>
-                    <input type="text" name="email" id="3" className='form-control' onChange={(e) => setEmail(e.target.value)} />
+                    <input type="text" name="email" id="3" className='form-control w-50 centerMe' onChange={(e) => setEmail(e.target.value)} />
                     <p className="text-danger">{formErrors.email?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Password</label>
-                    <input type="password" name="password" id="4" className='form-control' onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" name="password" id="4" className='form-control w-50 centerMe' onChange={(e) => setPassword(e.target.value)} />
                     <p className="text-danger">{formErrors.password?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Confirm Password</label>
-                    <input type="password" name="confirm" id="5" className='form-control' onChange={(e) => setConfirm(e.target.value)} />
+                    <input type="password" name="confirm" id="5" className='form-control w-50 centerMe' onChange={(e) => setConfirm(e.target.value)} />
                     <p className="text-danger">{formErrors.confirm?.message}</p>
                 </div>
                 <input type="submit" value="Register" className="btn btn-primary mb-2" />

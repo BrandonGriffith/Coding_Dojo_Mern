@@ -30,11 +30,11 @@ const LoginForm = () => {
             <form onSubmit={login}>
                 <div className="form-group">
                     <label htmlFor="">Email</label>
-                    <input type="text" name="email" id="6" className='form-control' onChange={(e) => setEmail(e.target.value)} />
+                    <input type="text" name="email" id="6" className='form-control w-50 centerMe' onChange={(e) => setEmail(e.target.value)} />
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Password</label>
-                    <input type="password" name="password" id="7" className='form-control' onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" name="password" id="7" className='form-control w-50 centerMe' onChange={(e) => setPassword(e.target.value)} />
                 </div>
                 <p className="text-danger">{loginformErrors}</p>
                 <input type="submit" value="Login" className="btn btn-success mb-2" />
