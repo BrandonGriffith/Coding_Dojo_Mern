@@ -1,19 +1,19 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
 
-const Dashboard = () => {
+const Dashboard = (props) => {
     const history = useHistory();
+    let setLoggedInUser = props.setLoggedInUser;
 
 
-    let [loggedInUser, setLoggedInUser] = useState({})
     useEffect(()=>{
         axios.get("http://localhost:8000/api/users/getloggedinuser", {withCredentials:true})
             .then(res=>{
                 console.log("res when getting logged in user", res)
                 if(res.data.results){
-                    setLoggedInUser(res.data.results)
+                    setLoggedInUser(res.data.results);
                 }else{
                     history.push("/")
                 }
@@ -22,7 +22,7 @@ const Dashboard = () => {
                 console.log("err when gettign logged in user", err)
                 history.push("/")
             })
-    }, [history])
+    }, [history, setLoggedInUser])
 
     const logout = ()=>{
         axios.get("http://localhost:8000/api/users/logout", {withCredentials:true})
@@ -35,8 +35,8 @@ const Dashboard = () => {
     }
 
     return (
-        <div>
-            <h1>Welcome {loggedInUser.firstName}!!!</h1>
+        <div className='d-flex justify-content-between'>
+            <h3>Welcome to the home page {props.loggedInUser.firstName}!!!</h3>
             <button onClick = {logout} className="btn btn-info">Log Out</button>
         </div>
     );
