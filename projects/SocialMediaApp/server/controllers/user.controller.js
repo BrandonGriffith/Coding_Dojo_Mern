@@ -87,7 +87,9 @@ api.login = async(req, res) => {
         firstName: user.firstName
     }, key);
     res.cookie("usertoken", userToken, key, {
-            httpOnly: true
+            httpOnly: true,
+            sameSite: 'none', 
+            secure: true
         })
         .json({ msg: "success!" });
 }

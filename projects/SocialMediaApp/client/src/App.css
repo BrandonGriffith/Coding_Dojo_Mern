@@ -12,6 +12,17 @@ body {
   display: none;
 }
 
+.profilePic {
+  width: 70%;
+  border-radius: 25px;
+  margin-top: 1vw;
+}
+
+.afterText {
+  opacity: 0.5;
+  font-size: 0.9vw;
+}
+
 .logout {
   position: absolute;
   position: fixed;

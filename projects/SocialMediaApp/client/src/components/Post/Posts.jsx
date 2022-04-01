@@ -45,16 +45,16 @@ const Posts = (props) => {
                         <div className="card bg-dark text-light col m-3 postSize">
                             <div className="card-body">
                                 <h3 className="card-title bg-dark text-light">
-                                        {PostObj.Title} Posted by {PostObj.User_id?.firstName}
+                                        {PostObj.Title} <span className='afterText'>Posted by</span> {PostObj.User_id?.firstName}
                                 </h3>
-                                <p className="card-text bg-dark text-light">
-                                    {PostObj.Message}
-                                </p>
                                 <p className="card-text bg-dark text-light"> 
                                     {PostObj.ImgUrl!==""?
                                         <img src={PostObj.ImgUrl} alt="" className='w-50'></img>
                                         :null
                                     }
+                                </p>
+                                <p className="card-text bg-dark text-light">
+                                    {PostObj.Message}
                                 </p>
                                 <button onClick = {()=>deletePost(PostObj._id)} className='btn btn-danger m-3'>
                                     Delete {PostObj.title}

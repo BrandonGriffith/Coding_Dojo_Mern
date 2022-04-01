@@ -7,6 +7,7 @@ const RegistrationForm = () => {
     let [firstName, setFirstName] = useState("");
     let [lastName, setLastName] = useState("");
     let [email, setEmail] = useState("");
+    let [imgUrl, setImgUrl] = useState("");
     let [password, setPassword] = useState("");
     let [confirm, setConfirm] = useState("");
     let [formErrors, setFormErrors] = useState({})
@@ -15,7 +16,7 @@ const RegistrationForm = () => {
 
     const register = (e) => {
         e.preventDefault();
-        let formInfo = { firstName, lastName, email, password, confirm };
+        let formInfo = { firstName, lastName, email, imgUrl, password, confirm };
         axios.post("http://localhost:8000/api/users/register", formInfo, { withCredentials: true })
             .then(res => {
                 console.log("res after registering", res);
@@ -49,13 +50,18 @@ const RegistrationForm = () => {
                     <p className="text-danger">{formErrors.email?.message}</p>
                 </div>
                 <div className="form-group">
+                    <label htmlFor="">imgUrl</label>
+                    <input type="text" name="imgUrl" id="4" className='form-control w-50 centerMe' onChange={(e) => setImgUrl(e.target.value)} />
+                    <p className="text-danger">{formErrors.imgUrl?.message}</p>
+                </div>
+                <div className="form-group">
                     <label htmlFor="">Password</label>
-                    <input type="password" name="password" id="4" className='form-control w-50 centerMe' onChange={(e) => setPassword(e.target.value)} />
+                    <input type="password" name="password" id="5" className='form-control w-50 centerMe' onChange={(e) => setPassword(e.target.value)} />
                     <p className="text-danger">{formErrors.password?.message}</p>
                 </div>
                 <div className="form-group">
                     <label htmlFor="">Confirm Password</label>
-                    <input type="password" name="confirm" id="5" className='form-control w-50 centerMe' onChange={(e) => setConfirm(e.target.value)} />
+                    <input type="password" name="confirm" id="6" className='form-control w-50 centerMe' onChange={(e) => setConfirm(e.target.value)} />
                     <p className="text-danger">{formErrors.confirm?.message}</p>
                 </div>
                 <input type="submit" value="Register" className="btn btn-primary mb-2" />

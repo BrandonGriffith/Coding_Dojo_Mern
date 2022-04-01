@@ -7,6 +7,9 @@ import Dashboard from './components/User/Dashboard';
 import Posts from './components/Post/Posts';
 import PostForm from './components/Post/PostForm';
 import SideBars from './components/Menu/SideBars';
+import User from './components/Menu/User';
+import UpdateUser from './components/User/UpdateUser';
+
 
 
 function App() {
@@ -20,12 +23,14 @@ function App() {
             <SignIn/>
           </Route>
           <Route exact path = "/dashboard">
-            <SideBars/>
+            <SideBars loggedInUser={loggedInUser} User={User}/>
             <Dashboard loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}/>
-            <PostForm loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser} 
-            submitHandler={submitHandler} setSubmitHandler={setSubmitHandler}/>
-            <Posts loggedInUser={loggedInUser} setLoggedInUser={setLoggedInUser}
-            submitHandler={submitHandler} setSubmitHandler={setSubmitHandler}/>
+            <PostForm loggedInUser={loggedInUser} submitHandler={submitHandler} 
+            setSubmitHandler={setSubmitHandler}/>
+            <Posts submitHandler={submitHandler} setSubmitHandler={setSubmitHandler}/>
+          </Route>
+          <Route exact path = "/edit/profile">
+            <UpdateUser loggedInUser={loggedInUser}/>
           </Route>
         </Switch>
       </div>
